@@ -1,0 +1,88 @@
+<button (click)="changeView()" class="float-end btn btn-sm btn-dark mx-3" ><i class="fas fa-eye"></i></button>
+<div *ngIf="defaultView" class="container mt-3">
+    <div class="row">
+        <div class="col-md-4">
+            <div id='loader'></div>
+            <div id='element' style="height: 38vh;"></div>
+        </div>
+        <div class="col-md-8">
+            <div class="row">
+                <div class="col-md-6 pe-0">
+                    <div id='loader'></div>
+                    <div id='element1' style="height: 38vh;"></div>
+                </div>
+                <div class="col-md-6 ps-0">
+                    <div id='loader'></div>
+                    <div id='element2' style="height: 38vh;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class=" bg-white mt-3">
+        <h6 class="fw-bold text-center p-1 border">Priority Customers</h6>
+        <div style="overflow-y:scroll; height: 35vh;" class="fixTableHead">
+            <table class="p-2 table text-center  table-hover table-striped">
+                <thead>
+                    <tr style="font-size: 15px;">
+                        <th>Srno</th>
+                        <th>Account #</th>
+                        <th>Customer name</th>
+                        <th>Balance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let customer of priorityCustomers;let i=index">
+                        <td>{{i+1}}.</td>
+                        <td>{{customer.CustAccountId}}</td>
+                        <td>{{customer.FullName}}</td>
+                        <td>₹ {{customer.Balance}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div *ngIf="!defaultView" class="container mt-3">
+    <div class="row">
+    <div class="col-md-6">
+        <div>
+            <div id='loader'></div>
+            <div id='element' style="height: 38vh;"></div>
+        </div> 
+        <div class=" bg-white mt-3">
+            <h6 class="fw-bold text-center p-1 border">Priority Customers</h6>
+            <div style="overflow-y:scroll; height: 35vh;" class="fixTableHead">
+                <table class="p-2 table text-center  table-hover table-striped">
+                    <thead>
+                        <tr style="font-size: 15px;">
+                            <th>Srno</th>
+                            <th>Account #</th>
+                            <th>Customer name</th>
+                            <th>Balance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let customer of priorityCustomers;let i=index">
+                            <td>{{i+1}}.</td>
+                            <td>{{customer.CustAccountId}}</td>
+                            <td>{{customer.FullName}}</td>
+                            <td>₹ {{customer.Balance}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 bg-white">
+        <div >
+            <div id='loader'></div>
+            <div id='element1' style="height: 38vh;"></div>
+        </div>
+        <hr>
+        <div >
+            <div id='loader'></div>
+            <div id='element2' style="height: 38vh;"></div>
+        </div>
+    </div>
+</div>
+</div>

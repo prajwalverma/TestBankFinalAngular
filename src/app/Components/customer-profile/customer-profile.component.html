@@ -1,0 +1,63 @@
+<div class="bg-img">
+
+    <br>
+    <div class="container">
+        <div *ngIf="currentCustomer" >
+            <div  style="box-shadow: 0 0 18px #ccc;" class="cust-img py-4 pb-5 px-3 rounded border">
+                <div ng-change >
+                    <h5 class="card-title mb-4 fw-bold">Customer Details
+                        <a [routerLink]="['/UpdateCustomer',customerId]" title="Update Customer Details"
+                            style=" box-shadow:3px 3px 5px #000" class="btn btn-secondary btn-sm">
+                            <i class="fa fa-edit" style="font-size:16px;color:white"></i>
+                        </a>
+                    </h5>
+                </div>
+                <hr>
+                <div class="row ">
+                    <div class="col-md-2">
+                        <b>Customer # </b>{{currentCustomer.CustomerId}}
+                    </div>
+                    <div class="col-md-3">
+                        <b>Name: </b>{{currentCustomer.FirstName+' '+currentCustomer.LastName}}
+                    </div>
+                    <div class="col-md-3">
+                        <b>Mobile: </b>{{currentCustomer.Mobile}}
+                    </div>
+                    <div class="col-md-4">
+                        <b>Email: </b>{{currentCustomer.Email}}
+                    </div>
+                </div>
+            </div>
+            <br>
+            <button [routerLink]="['/AddAccount',customerId]" style="border: none; background-color: var(--green)" class="mb-4 mt-5 btn-sm btn btn-success"><i class="fa fa-plus"> </i> Add Account</button>
+            <br>
+            <div class="cust-img" style="border-radius: 5px;" >
+                <mat-tab-group  animationDuration="0ms" style="padding: 20px; box-shadow: 0 0 12px #ccc; border-radius: 5px;" mat-align-tabs="start">
+                    <mat-tab label="All Accounts">
+                        <br>
+                        <app-account-details (someChanges)="getAllAccounts()" [accountDetails]="getALLAccounts()">
+                        </app-account-details>
+                        <div class="text-center fw-bold" *ngIf="accountDetails.length==0">Look's like you don't have any
+                            Account</div>
+                    </mat-tab>
+                    <mat-tab label="Saving Accounts">
+                        <br>
+                        <app-account-details (someChanges)="getAllAccounts()" [accountDetails]="getSavingAccounts()">
+                        </app-account-details>
+                        <div class="text-center fw-bold" *ngIf="savingAccounts.length==0">You don't have any Saving
+                            Account
+                        </div>
+                    </mat-tab>
+                    <mat-tab label="Loan Accounts">
+                        <br>
+                        <app-account-details (someChanges)="getAllAccounts()" [accountDetails]="getLoanAccounts()">
+                        </app-account-details>
+                        <div class="text-center fw-bold" *ngIf="loanAccounts.length==0">You don't have any Loan Accounts
+                        </div>
+                    </mat-tab>
+                </mat-tab-group>
+                <!-- <br><br><br><br><br><br><br><br><br><br><br><br> -->
+            </div>
+        </div>
+    </div>
+</div>

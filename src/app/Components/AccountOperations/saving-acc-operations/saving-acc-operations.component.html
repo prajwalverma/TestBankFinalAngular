@@ -1,0 +1,126 @@
+<div class="container"><button [routerLink]="['/Profile',customerId]"
+    class="my-2 btn btn-sm btn-secondary">back</button>
+</div>
+
+<div class="container">
+  
+<div *ngIf="savingAccount">
+  <div class=" rounded border p-3" style="box-shadow: 0 0 12px #ccc; background-color: #fff;">
+    <div ng-change>
+      <h5 class="card-title mb-4">Account Details</h5>
+    </div>
+    <hr>
+    <div class="row ">
+      <div class="col-md-3">
+        <b>Account Number # </b>{{savingAccount.CustAccountId}}
+      </div>
+      <div class="col-md-3">
+        <b>Branch Code: </b>{{savingAccount.BranchCode}}
+      </div>
+      <div class="col-md-3">
+        <b>Transfer Limit:</b>{{' ₹'+savingAccount.TransferLimit}}
+      </div>
+      <div class="col-md-3">
+        <b>Balance:</b>{{' ₹'+savingAccount.Balance}}
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="">
+    <mat-tab-group animationDuration="0ms"  mat-align-tabs="start" style="box-shadow: 0 0 12px #ccc; border-radius: 5px; padding: 20px; background-color: #fff;">
+      <mat-tab label="Withdraw" >
+        <br>
+        <form class="col-md-3 " (ngSubmit)="withdraw()" [formGroup]="withdrawForm">
+          <div class="form-floating mb-3">
+            <input type="number" name="Amount" class="form-control" id="Amount" placeholder="Amount"
+              formControlName="Amount">
+            <label for="Amount">Amount ₹</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="text" name="Remarks" class="form-control" id="Remarks" placeholder="Remarks"
+              formControlName="Remarks">
+            <label for="Remarks">Remarks</label>
+          </div>
+          <div>
+            <button type="reset" class="col-md-4 btn btn-danger">Cancel</button>
+            <button class="mx-3 col-md-4 btn btn-success" type="submit">Withdraw</button>
+          </div>
+        </form>
+      </mat-tab>
+      <mat-tab label="Deposit">
+        <br>
+        <form class="col-md-3 " (ngSubmit)="deposit()" [formGroup]="depositForm">
+          <div class="form-floating mb-3">
+            <input type="number" name="Amount" class="form-control" id="Amount" placeholder="Amount"
+              formControlName="Amount">
+            <label for="Amount">Amount ₹</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="text" name="Remarks" class="form-control" id="Remarks" placeholder="Remarks"
+              formControlName="Remarks">
+            <label for="Remarks">Remarks</label>
+          </div>
+          <div>
+            <button type="reset" class="col-md-4 btn btn-danger">Cancel</button>
+            <button class="mx-3 col-md-4 btn btn-success" type="submit">Deposit</button>
+          </div>
+        </form>
+      </mat-tab>
+      <mat-tab label="Transfer">
+        <br>
+        <form class="col-md-3" (ngSubmit)="transfer()" [formGroup]="transferForm">
+          <div class="form-floating mb-3">
+            <input type="number" name="AccountNumber" class="form-control" id="AccountNumber"
+              placeholder="Account Number" formControlName="AccountNumber">
+            <label for="AccountNumber">Reciever Account Number</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="number" name="Amount" class="form-control" id="Amount" placeholder="Amount"
+              formControlName="Amount">
+            <label for="Amount">Transfer Amount </label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="text" name="Remarks" class="form-control" id="Remarks" placeholder="Account Number"
+              formControlName="Remarks">
+            <label for="Remarks">Remarks</label>
+          </div>
+          <div>
+            <button type="reset" class="col-md-4 btn btn-danger">Cancel</button>
+            <button class="mx-3 col-md-4 btn btn-success" type="submit">Transfer</button>
+          </div>
+        </form>
+      </mat-tab>
+      <mat-tab label="Transaction">
+        <br>
+        <table *ngIf="txns.length!=0" class="table text-center table-bordered table-hover table-striped">
+          <thead>
+            <tr>
+              <th>Sr.No</th>
+              <th>Transaction #</th>
+              <th>Transaction Date & Time</th>
+              <th>Remarks</th>
+              <th>Amount</th>
+              <th>Transaction Details</th>
+              <th>Balance</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let txn of txns;let i= index">
+              <td>{{i+1}}</td>
+              <td>{{txn.SavingAccTxnId}}</td>
+              <td>{{txn.TxnDate | date: 'dd/MM/yyyy hh:mm:ss a'}}</td>
+              <td>{{txn.Remarks}}</td>
+              <td>₹ {{txn.Amount}}</td>
+              <td>{{txn.TxnDetails}}</td>
+              <td>₹ {{txn.Balance}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="text-center fw-bold" *ngIf="txns.length==0">You don't have any transactions, go spend some money
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>
+
+</div>

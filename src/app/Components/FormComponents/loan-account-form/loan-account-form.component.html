@@ -1,0 +1,69 @@
+<div [formGroup]="loanAccountForm">
+    <div class="row">
+        <div class="col-md-6">
+            <div class=" form-floating mb-3">
+                <select class="form-select" (change)="setAccountSubType($event)" formControlName="AccountTypeId" name="AccountSubType"
+                    id="AccountSubType">
+                    <option value="" disabled selected>Select </option>
+                    <option *ngFor="let accType of filteredAccountTypes" [value]="accType.AccountTypeId">
+                        {{accType.AccountSubType}}</option>
+                </select>
+                <label for="AccountSubType">Account Sub Type</label>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-floating mb-3">
+                <input type="text" name="branchCode" class="form-control" id="branchCode"
+                    placeholder="Branch Code" formControlName="BranchCode">
+                <label for="branchCode">Branch Code</label>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class=" form-floating mb-3">
+                <select class="form-select" (change)="resetFields()" formControlName="LoanDuration" name="LoanDuration"
+                    id="loanDuration">
+                    <option value="" disabled selected>Select </option>
+                    <option value="12">12 Months</option>
+                    <option value="24">24 Months</option>
+                    <option value="36">36 Months</option>
+                </select>
+                <label for="loanDuration">Loan Duration</label>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-floating mb-3">
+                <input type="number" readonly name="rateOfInterest" class="form-control" id="rateOfInterest"
+                    placeholder="Rate Of Interest" formControlName="RateOfInterest">
+                <label for="rateOfInterest">ROI (%)</label>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-floating mb-3">
+                <input type="number" name="loanAmount" class="form-control" id="loanAmount"
+                    placeholder="Loan Amount" formControlName="LoanAmount">
+                <label for="loanAmount">Loan Amount</label>
+            </div>
+        </div>
+    </div>
+    <div class="mb-3">
+        <input [disabled]="!(loanAccountForm.get('LoanAmount')?.valid&&loanAccountForm.get('LoanDuration')?.valid&&loanAccountForm.get('AccountTypeId')?.valid)" class="btn btn-sm btn-primary" type="button" (click)="calculateLoanmethod()" value="Calculate" >
+    </div>
+    <div class="row">
+        <div class="col-md-6 ">
+            <div class="form-floating mb-3">
+                <input type="number" readonly name="balanceAmount" class="form-control" id="balanceAmount"
+                     placeholder="Balance Amount" [value]="totalamt">
+                <label for="balanceAmount">Total Amount</label>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-floating mb-3">
+                <input type="number" readonly [value]="emi" name="emi" class="form-control" id="emi"
+                    placeholder="EMI">
+                <label for="emi">EMI</label>
+            </div>
+        </div>
+    </div>
+</div>

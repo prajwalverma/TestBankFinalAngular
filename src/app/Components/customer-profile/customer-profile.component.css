@@ -1,0 +1,17 @@
+.bg-img{
+    background: linear-gradient(to bottom, rgba(255,255,255,0.3), rgba(255,255,255,0.3)), 
+    url('../../../assets/7849.jpg');
+    /* url('../../../assets/32602.jpg'); */
+    /* background-size: 100vh; */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-attachment: fixed;
+    
+    /* background-image: url('https://th.bing.com/th/id/OIP.lARg3yWLCUVRq4C_3MWiwgHaEo?pid=ImgDet&rs=1'); */
+    /* width: 100vw; */
+    height: 100vh;
+}
+.cust-img{
+    background-color: #fff;
+}

@@ -1,0 +1,52 @@
+
+body{
+    /* background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://brownboots.com/sft1196/does-your-bank-website-proposal-cover-all-the-bases.jpg'); */
+    /* background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://ssl.bigstockimages.com/0/4/2/large1500/240405211.jpg'); */
+    /* background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://cherrypulp.com/content/uploads/2019/06/cherry-pulp-articles-banques-images-gratuites.jpg'); */
+    /* background-image: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.7)), */
+        /* url('https://cherrypulp.com/content/uploads/2019/06/cherry-pulp-articles-banques-images-gratuites.jpg'); */
+        background-image: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+        url('../../../assets/MicrosoftTeams-image.png');
+    
+        height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+.font-style{
+    font-family: 'Pacifico', cursive;
+    font-family: 'Yellowtail', cursive;
+}
+
+.rounded-input-border-l{
+    border-bottom-left-radius: 40px;
+    border-top-left-radius: 40px;
+    border-left: 2px #fff;
+    border-top: 2px #fff;
+    border-bottom: 2px #fff;
+    font-size: 22px;
+}
+
+.rounded-input-border-r{
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 40px;
+    font-size: 22px;
+    margin-left: -28px;
+    border-color: #fff;
+    color: #000;
+    background-color: #fff;
+    border-right: 2px #fff;
+    border-top: 2px #fff;
+    border-bottom: 2px #fff;
+    
+}
+
+
+.anchor-link{
+    text-decoration: none;  
+    font-style: italic; 
+    font-weight: 700; 
+    color: var(--pink);
+}
+

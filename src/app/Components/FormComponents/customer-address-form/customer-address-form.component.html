@@ -1,0 +1,52 @@
+<div [formGroup]="addressInfo" >
+    <div class="form-floating mb-3">
+        <input type="address" name="addressLine1" class="form-control" id="addressLine1"
+            placeholder="address line 1" formControlName="Address1">
+        <label for="addressLine1">Address Line 1</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="text" name="addressLine2" class="form-control" id="addressLine2"
+            placeholder="address line 2" formControlName="Address2">
+        <label for="addressLine2">Address Line 2</label>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class=" form-floating mb-3">
+                <select class="form-select " required name="country" id="country" (change)="setCountryValue($event)">
+                    <option value="" selected>Select Country</option>
+                    <option *ngFor="let country of countries" [value]="country.CountryId">
+                        {{country.CountryName}}</option>
+                </select>
+                <label for="country">Country</label>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class=" form-floating mb-3">
+                <select class="form-select" required  name="state" id="state" (change)="setStateValue($event)">
+                    <option value="" selected>Select state</option>
+                    <option *ngFor="let state of filteredStates" [value]="state.StateId">{{state.StateName}}
+                    </option>
+                </select>
+                <label for="state">State</label>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class=" form-floating mb-3">
+                <select class="form-select" required name="city" id="city" (change)="setCityValue($event)">
+                    <option value="" selected>Select city</option>
+                    <option *ngFor="let city of filteredCities" [value]="city.CityId">{{city.CityName}}</option>
+                </select>
+                <label for="city">City</label>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class=" form-floating mb-3">
+                <input class="form-control" formControlName="ZipCodeId" name="zipCode" id="zipCode" readonly
+                    type="text" [value]="zipCodeId">
+                <label for="zipCode">ZipCode</label>
+            </div>
+        </div>
+    </div>
+</div>

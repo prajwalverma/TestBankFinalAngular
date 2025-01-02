@@ -1,0 +1,26 @@
+<body>
+    <br>
+    <div class="bg-style"></div>
+    <div class="mt-5 container col-md-6 ">
+        <div class="row">
+            <div class="col-md-11">
+                <input id="text-id" type="text" name="customerId" class="form-control rounded-input-border-l px-3"
+                    (keyup.enter)="searchCustomer(customerId.value);customerId.value = ''" #customerId
+                    placeholder="Enter Your Customer Id" />
+            </div>
+            <div class="col-md-1">
+                <button class="btn btn-primary rounded-input-border-r "
+                    (click)="searchCustomer(customerId.value);customerId.value = ''">
+                    <i class="fa fa-search"></i>
+                </button>
+            </div>
+            <!-- <div class="col-md-1 mx-2 ">
+            <button class="btn btn-danger rounded-input-border " (click)="customerId.value = ''">Clear</button>
+        </div> -->
+        </div>
+        <div class="text-center mt-3" style="color: #fff;">
+            <h5> New Customer? <a class="anchor-link" routerLink="/Register">Register</a></h5>
+        </div>
+    </div>
+
+</body>

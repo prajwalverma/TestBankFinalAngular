@@ -1,0 +1,30 @@
+<table *ngIf="accountDetails.length!=0" class="table text-center table-bordered table-hover table-striped">
+    <thead>
+        <tr>
+            <th>Account Number</th>
+            <th>Account Type</th>
+            <th>Account Subtype</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let accountDetail of accountDetails">
+            <td>{{accountDetail.AccountNumber}}</td>
+            <td>{{accountDetail.AccountType}}</td>
+            <td>{{accountDetail.AccountSubType}}</td>
+            <td class="text-center">
+                <a [routerLink]="['/UpdateAccount',accountDetail.AccountNumber]" title="Update Account" style="box-shadow:3px 3px 5px #000"
+                    class="mx-2 btn btn-sm btn-secondary">
+                    <i class="fa fa-edit" style="font-size:16px;color:white"></i>
+                </a>
+                <button (click)="goToAccountDetails(accountDetail)" title="Details" style="box-shadow:3px 3px 5px #000"
+                    class="mx-2 btn btn-sm btn-warning">
+                    <i class="fas fa-info-circle" style="font-size:16px;color:white"></i>
+                </button >
+                <button (click)="deleteAccountByCustAccountId(accountDetail.AccountNumber)" title="Delete Account" style="box-shadow:3px 3px 5px #000" class="mx-2 btn btn-sm btn-danger">
+                    <i class="far fa-trash-alt" style="font-size:16px;color:white"></i>
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>

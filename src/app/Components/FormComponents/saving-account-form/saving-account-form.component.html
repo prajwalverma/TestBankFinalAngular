@@ -1,0 +1,38 @@
+<div [formGroup]="savingAccountForm">
+    <div class="row">
+        <div class="col-md-6">
+            <div class=" form-floating mb-3">
+                <select class="form-select" formControlName="AccountTypeId" (change)="setSavingAccountType($event)"
+                    name="AccountSubType" id="AccountSubType">
+                    <option value="" disabled selected>Select</option>
+                    <option *ngFor="let accType of filteredAccountTypes" [value]="accType.AccountTypeId">
+                        {{accType.AccountSubType}}</option>
+                </select>
+                <label for="AccountSubType">Account Sub Type</label>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-floating mb-3">
+                <input type="number" [readonly]="isZeroBalance" name="balance" formControlName="Balance"
+                    class="form-control" id="balance" placeholder="Balance">
+                <label for="balance">Balance</label>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-floating mb-3">
+                <input type="number" name="transferLimit" formControlName="TransferLimit" class="form-control"
+                    id="transferLimit" placeholder="Transfer Limit">
+                <label for="transferLimit">Transfer Limit</label>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-floating mb-3">
+                <input type="text" name="branchCode" formControlName="BranchCode" class="form-control" id="branchCode"
+                    placeholder="Branch Code">
+                <label for="branchCode">Branch Code</label>
+            </div>
+        </div>
+    </div>
+</div>

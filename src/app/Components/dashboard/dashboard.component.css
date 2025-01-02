@@ -1,0 +1,23 @@
+.fixTableHead {
+    overflow-y: auto;
+    height: 110px;
+    background-color: white;
+  }
+  .fixTableHead thead th {
+    position: sticky;
+    top: 0;
+    background-color: white;
+  }
+  /* table {
+    border-collapse: collapse;        
+    width: 100%;
+  } */
+  /* }
+  th,
+  td {
+    padding: 8px 15px;
+    
+  }
+  th {
+    background: #ABDD93;
+  } */

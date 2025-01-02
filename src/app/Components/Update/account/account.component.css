@@ -1,0 +1,17 @@
+.custom-img{    
+    background: url('../../../../assets/MicrosoftTeams-image2.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 50vh;
+}
+
+.form-design{
+    padding: 30px;
+    /* border: 2px #000; */
+    box-shadow: 0 0 30px #ccc;
+    margin: 0px auto;
+    background-color: #fff;
+    font-size: 15px;
+    /* height: 80vh; */
+}

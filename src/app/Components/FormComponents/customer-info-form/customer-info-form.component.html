@@ -1,0 +1,54 @@
+<div [formGroup]="custInfo">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-floating mb-3">
+                <input type="text" name="firstName" class="form-control" id="firstName" placeholder="First Name"
+                    formControlName="FirstName">
+                <label for="firstName">First Name</label>
+            </div>
+        </div>
+        <div class="col-md-6 ">
+            <div class="form-floating mb-3">
+                <input type="text" name="lastName" class="form-control" id="lastName" placeholder="Last Name"
+                    formControlName="LastName">
+                <label for="lastName">Last Name</label>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-7">
+            <div class="form-floating mb-3">
+                <input type="email" name="email" class="form-control" id="email" placeholder="name@example.com"
+                    formControlName="Email">
+                <label for="email">Email</label>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="form-floating mb-3">
+                <input type="text" name="mobile" class="form-control" id="mobile" placeholder="Mobile Number"
+                    formControlName="Mobile">
+                <label for="mobile">Mobile</label>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class=" form-floating mb-3">
+                <select class="form-select" name="MaritalStatus" id="MaritalStatus"
+                    formControlName="MaritalStatus" required>
+                    <option value="" selected disabled>Select status</option>
+                    <option value="single">Single</option>
+                    <option value="married">Married</option>
+                </select>
+                <label for="MaritalStatus">Marital Status</label>
+            </div>
+        </div>
+        <div class="col-md-6 ">
+            <div class="form-floating mb-3">
+                <input type="date" name="dob" class="form-control" id="dob" placeholder="Enter Date of Birth"
+                    formControlName="DateOfBirth">
+                <label for="dob">Date of Birth</label>
+            </div>
+        </div>
+    </div>
+</div>

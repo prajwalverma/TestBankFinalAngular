@@ -1,0 +1,49 @@
+/* You can add global styles to this file, and also import other style files */
+@import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+@import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
+/* 
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
+
+body{
+  background-color: #daf2f2;
+}
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #ccc;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgb(77, 75, 75);
+    border-radius: 10px;
+  }  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
+:root {
+    --lightBlue: #B0E0E6;
+    --silver: #C0C0C0;
+    --bluishGrey: #B0C4DE;
+    --whitishBlue: #F0F8FF;
+    --skyBlue: #00BFFF;
+    --green: rgb(71, 148, 52);
+    --pink: rgb(207, 134, 134);
+}
+
+.mat-tab-group.mat-primary .mat-ink-bar {
+    background-color: black;
+}
+
+.mat-tab-label {
+    font-weight: bold;
+    font-size: 20px;
+    color: black;
+}
+
+.font{
+  font-size: 35px;
+  font-family: 'Pacifico', cursive;
+  
+}

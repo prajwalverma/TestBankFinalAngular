@@ -1,0 +1,30 @@
+
+<div style="background-color: #daf2f2; margin: 0; height: 100%; ">
+    <div class="container">
+        <br>
+        <br>
+        <div class="row form-design">
+            <div class="col-md-6 custom-img">
+            </div>
+            <div class="g-3 card col-md-6 mx-auto p-0">
+                <div style="background-color: #daf2f2;">
+                    <h2 class="text-center p-2">Update Customer Details</h2>
+                </div>
+                <br>
+                <form [formGroup]="updateForm" (ngSubmit)="onSubmitCustomerUpdateForm()" class="col-md-10 mx-auto">
+            
+                    <app-customer-info-form formGroupName="customerInfo"></app-customer-info-form>
+            
+            
+                    <app-customer-address-form formGroupName="customerAddressInfo"></app-customer-address-form>
+                    <div style="display: flex;justify-content: space-between;" class="mb-3 text-center">
+                        <input type="button" value="Cancel" (click)="cancel()" class="col-md-3 btn btn-sm btn-primary">
+                        <input type="submit" [disabled]="!updateForm.valid" value="Update" class="col-md-3 btn btn-sm btn-success">
+                    </div>
+                </form>
+            </div>
+            
+        </div>
+    </div>
+    <br><br>
+</div>

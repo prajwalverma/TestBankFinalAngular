@@ -1,0 +1,84 @@
+<div class="container"><button [routerLink]="['/Profile',customerId]" class="my-2 btn btn-sm btn-secondary">back</button>
+</div>
+
+<div class="container">
+    
+<div *ngIf="loanAccount" >
+    <div class=" rounded border p-3" style="box-shadow: 0 0 12px #ccc; background-color: #fff;">
+        <div ng-change>
+            <h5 class="card-title mb-4">Account Details</h5>
+        </div>
+        <hr>
+        <div class="row ">
+            <div class="col-md-3">
+                <b>Account Number # </b>{{loanAccount.CustAccountId}}
+            </div>
+            <div class="col-md-3">
+                <b>Branch Code: </b>{{loanAccount.BranchCode}}
+            </div>
+            <div class="col-md-3">
+                <b>Interest Rate: </b>{{loanAccount.RateOfInterest+'%'}}
+            </div>
+            <div class="col-md-3">
+                <b>LoanDuration(Months): </b>{{loanAccount.LoanDuration}}
+            </div>
+        </div>
+        <br>
+        <div class="row ">
+            <div class="col-md-3">
+                <b>Loan Amount: </b>{{'₹'+loanAccount.LoanAmount}}
+            </div>
+            <div class="col-md-3">
+                <b>Pending Amount: </b>{{'₹'+loanAccount.BalanceAmount}}
+            </div>
+        </div>
+
+    </div>
+    <br>
+    <div class="">
+        <mat-tab-group animationDuration="0ms" style="background-color: #fff; padding: 20px; border-radius: 5px; box-shadow: 0 0 18px #ccc;" mat-align-tabs="start">
+            <mat-tab label="EMI Payment">
+                <br>
+                <div class="col-md-3 ">
+                    <div class="form-floating mb-3">
+                        <input type="number" readonly name="emiAmount" class="form-control" id="emiAmount"
+                            placeholder="Amount" [value]="EmiAmount">
+                        <label for="emiAmount">EMI Amount ₹</label>
+                    </div>
+                    <div>
+                        <!-- <button class="col-md-4 btn btn-danger">Cancel</button> -->
+                        <button  [disabled]="!isPay" class="col-md-4 btn btn-success" (click)="payEmi()" type="button">Pay</button>
+                    </div>
+                </div>
+            </mat-tab>
+            <mat-tab label="Transaction">
+                <br>
+                <table *ngIf="lntxns.length!=0" class="table text-center table-bordered table-hover table-stripped">
+                    <thead>
+                        <tr>
+                            <th>Sr.No</th>
+                            <th>Transaction #</th>
+                            <th>Transaction Date</th>
+                            <th>Amount Paid</th>
+                            <th>Status</th>
+                            <th>Balance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let txn of lntxns;let i= index">
+                            <td>{{i+1}}</td>
+                            <td>{{txn.LoanAccTxnId}}</td>
+                            <td>{{txn.EmiDate | date : 'dd/mm/yy hh:mm:ss a'}}</td>
+                            <td>₹ {{txn.EmiAmount}}</td>
+                            <td>{{txn.Status}}</td>
+                            <td>₹ {{txn.PendingAmount}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="text-center fw-bold" *ngIf="lntxns.length==0">You haven't paid any emi's</div>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+</div>
+
+</div>

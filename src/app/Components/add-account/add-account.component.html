@@ -1,0 +1,89 @@
+<div style="background-color: #daf2f2; margin: 0; height: 100%; ">
+    <div class="container">
+        <br>
+        <br>
+        <div class="row form-design">
+            <div class="col-md-6 custom-img">
+            </div>
+
+            <div class="g-3 card col-md-6 mx-auto p-0">
+                <div style="background-color: #daf2f2;">
+                    <h2 class="text-center p-2">Add Account</h2>
+                </div>
+                <br>
+                <div class="col-md-10 mx-auto">
+                    <div class=" form-floating mb-3">
+                        <select class="form-select" name="AccountType" id="AccountType" (change)="setAccountType($event)">
+                            <option value="" selected disabled>Select Account Type</option>
+                            <option *ngFor="let accType of uniqueAccountTypes" [value]="accType">{{accType}}</option>
+                        </select>
+                        <label for="AccountType">AccountType</label>
+                    </div>
+                    <form *ngIf="isSavingAccountForm" (ngSubmit)="onSubmitSavingAccountForm()" [formGroup]="savingAccountForm">
+                        <app-saving-account-form formGroupName="savingAccountFormComponent"
+                            [filteredAccountTypes]="getFilteredAccounts()">
+                        </app-saving-account-form>
+                        <div style="display: flex;justify-content: space-between;" class="mb-3 float-right">
+                            <input type="cancel" (click)="cancel()" value="Cancel" class="col-md-3 btn btn-sm btn-danger">
+                            <input type="submit" [disabled]="!savingAccountForm.valid" value="Submit"
+                                class="col-md-3 btn btn-sm btn-success">
+                        </div>
+                    </form>
+                    <form *ngIf="isLoanAccountForm" (ngSubmit)="onSubmitLoanAccountForm()" [formGroup]="loanAccountForm">
+                        <app-loan-account-form formGroupName="loanAccountFormComponent"
+                            [filteredAccountTypes]="getFilteredAccounts()"></app-loan-account-form>
+                        <div style="display: flex;justify-content: space-between;" class="mb-3 float-right">
+                            <input type="button" (click)="cancel()" value="Cancel" class="col-md-3 btn btn-sm btn-danger">
+                            <input type="submit" [disabled]="!loanAccountForm.valid" value="Submit"
+                                class="col-md-3 btn btn-sm btn-success">
+                        </div>
+                    </form>
+                    <div *ngIf="(!isLoanAccountForm&&!isSavingAccountForm)" class="mb-3">
+                        <!-- <input type="button" (click)="displayAddressForm()" value="Back" class="col-md-3 btn btn-sm btn-primary"> -->
+                        <input type="button" (click)="cancel()" value="Cancel" class="col-md-3 btn btn-sm btn-danger">
+                    </div>
+                </div>
+        </div>
+    </div>
+    <br><br>
+</div>
+<!-- 
+<br>
+<div class="g-3 card col-md-6 mx-auto">
+    <div class="card-header">
+        <h2 class="text-center">Add Account</h2>
+    </div>
+    <br>
+    <div class="col-md-10 mx-auto">
+        <div class=" form-floating mb-3">
+            <select class="form-select" name="AccountType" id="AccountType" (change)="setAccountType($event)">
+                <option value="" selected disabled>Select Account Type</option>
+                <option *ngFor="let accType of uniqueAccountTypes" [value]="accType">{{accType}}</option>
+            </select>
+            <label for="AccountType">AccountType</label>
+        </div>
+        <form *ngIf="isSavingAccountForm" (ngSubmit)="onSubmitSavingAccountForm()" [formGroup]="savingAccountForm">
+            <app-saving-account-form formGroupName="savingAccountFormComponent"
+                [filteredAccountTypes]="getFilteredAccounts()">
+            </app-saving-account-form>
+            <div style="display: flex;justify-content: space-between;" class="mb-3 float-right">
+                <input type="cancel" (click)="cancel()" value="Cancel" class="col-md-3 btn btn-sm btn-danger">
+                <input type="submit" [disabled]="!savingAccountForm.valid" value="Submit"
+                    class="col-md-3 btn btn-sm btn-success">
+            </div>
+        </form>
+        <form *ngIf="isLoanAccountForm" (ngSubmit)="onSubmitLoanAccountForm()" [formGroup]="loanAccountForm">
+            <app-loan-account-form formGroupName="loanAccountFormComponent"
+                [filteredAccountTypes]="getFilteredAccounts()"></app-loan-account-form>
+            <div style="display: flex;justify-content: space-between;" class="mb-3 float-right">
+                <input type="button" (click)="cancel()" value="Cancel" class="col-md-3 btn btn-sm btn-danger">
+                <input type="submit" [disabled]="!loanAccountForm.valid" value="Submit"
+                    class="col-md-3 btn btn-sm btn-success">
+            </div>
+        </form>
+        <div *ngIf="(!isLoanAccountForm&&!isSavingAccountForm)" class="mb-3">
+            <input type="button" (click)="displayAddressForm()" value="Back" class="col-md-3 btn btn-sm btn-primary">
+            <input type="button" (click)="cancel()" value="Cancel" class="mx-5 col-md-3 btn btn-sm btn-danger">
+        </div>
+    </div>
+</div> -->

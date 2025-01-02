@@ -1,0 +1,81 @@
+<div style="background-color: #daf2f2; margin: 0; height: 100%; ">
+    <div class="container">
+        <br>
+        <br>
+        <div class="row form-design">
+            <div class="col-md-6 custom-img">
+            </div>
+
+            <div class="g-3 card col-md-6 p-0">
+                <div style="background-color: #daf2f2;">
+                    <h2 class="text-center p-2">{{formName}}</h2>
+                </div>
+                <br>
+                <form [formGroup]="registerForm" (ngSubmit)="onSubmitCustomerForm()" class="col-md-11 mx-auto">
+                    <div [style.display]="isCustomerInfoForm?'block':'none'">
+                        <app-customer-info-form formGroupName="customerInfo"></app-customer-info-form>
+                        <div style="display: flex;justify-content:right;" class="mb-3 text-center">
+                            <input (click)="displayAddressForm()"
+                                [disabled]="registerForm.get('customerInfo')?.valid?false:true" type="button"
+                                value="next" class="col-md-3 btn btn-sm btn-success" >
+                        </div>
+                    </div>
+                    <div [style.display]="isCustomerAddressForm?'block':'none'">
+                        <app-customer-address-form formGroupName="customerAddressInfo"></app-customer-address-form>
+                        <div style="display: flex;justify-content: space-between;" class="mb-3 text-center">
+                            <input type="button" value="back" (click)="displayCustomerInfoForm()"
+                                class="col-md-3 btn btn-sm btn-primary">
+                            <input (click)="displayAccountForm()" type="submit"
+                                [disabled]="registerForm.get('customerAddressInfo')?.valid?false:true" value="next"
+                                class="col-md-3 btn btn-sm btn-success">
+                        </div>
+                    </div>
+                </form>
+                <div class="col-md-10 mx-auto" [style.display]="isAccountForm?'block':'none'">
+                    <div class=" form-floating mb-3">
+                        <select class="form-select" name="AccountType" id="AccountType"
+                            (change)="setAccountType($event)">
+                            <option value="" selected disabled>Select Account Type</option>
+                            <option *ngFor="let accType of uniqueAccountTypes" [value]="accType">{{accType}}</option>
+                        </select>
+                        <label for="AccountType">AccountType</label>
+                    </div>
+                    <form *ngIf="isSavingAccountForm" (ngSubmit)="onSubmitSavingAccountForm()"
+                        [formGroup]="savingAccountForm">
+                        <app-saving-account-form formGroupName="savingAccountFormComponent"
+                            [filteredAccountTypes]="getFilteredAccounts()">
+                        </app-saving-account-form>
+                        <div style="display: flex;justify-content: space-between;" class="mb-3 float-right">
+                            <input type="button" (click)="displayAddressForm()" value="Back"
+                                class="col-md-3 btn btn-sm btn-primary">
+                            <input type="cancel" (click)="cancel()" value="Cancel"
+                                class="col-md-3 btn btn-sm btn-danger">
+                            <input type="submit" [disabled]="!savingAccountForm.valid" value="Submit"
+                                class="col-md-3 btn btn-sm btn-success">
+                        </div>
+                    </form>
+                    <form *ngIf="isLoanAccountForm" (ngSubmit)="onSubmitLoanAccountForm()"
+                        [formGroup]="loanAccountForm">
+                        <app-loan-account-form formGroupName="loanAccountFormComponent"
+                            [filteredAccountTypes]="getFilteredAccounts()"></app-loan-account-form>
+                        <div style="display: flex;justify-content: space-between;" class="mb-3 float-right">
+                            <input type="button" (click)="displayAddressForm()" value="Back"
+                                class="col-md-3 btn btn-sm btn-primary">
+                            <input type="button" (click)="cancel()" value="Cancel"
+                                class="col-md-3 btn btn-sm btn-danger">
+                            <input type="submit" [disabled]="!loanAccountForm.valid" value="Submit"
+                                class="col-md-3 btn btn-sm btn-success">
+                        </div>
+                    </form>
+                    <div *ngIf="(!isLoanAccountForm&&!isSavingAccountForm)" class="mb-3">
+                        <input type="button" (click)="displayAddressForm()" value="Back"
+                            class="col-md-3 btn btn-sm btn-primary">
+                        <input type="button" (click)="cancel()" value="Cancel"
+                            class="mx-5 col-md-3 btn btn-sm btn-danger">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br><br>
+</div>
